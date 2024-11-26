@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import UserForm from './components/UserForm';
+import UserList from './components/UserList';
+import RoleForm from './components/RoleForm';
+import RoleList from './components/RoleList';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+    const [refreshUsers, setRefreshUsers] = useState(false);
+    const [refreshRoles, setRefreshRoles] = useState(false);
+
+    const toggleUser Refresh = () => setRefreshUsers(!refreshUsers);
+    const toggleRoleRefresh = () => setRefreshRoles(!refreshRoles);
+
+    return (
+        <div>
+            <h1>Admin Dashboard</h1>
+            <h2>Manage Users</h2>
+            <User Form refreshUsers={toggleUser Refresh} />
+            <User List refreshUsers={refreshUsers} />
+
+            <h2>Manage Roles</h2>
+            <RoleForm refreshRoles={toggleRoleRefresh} />
+            <RoleList refreshRoles={refreshRoles} />
+        </div>
+    );
+};
 
 export default App;
